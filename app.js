@@ -37,7 +37,7 @@ app.post('/write', function(req, res, next) {
     var send = JSON.stringify(obj);
     fs.writeFile(filePath, send, function(err) {
       if (err) throw err;
-      res.render('write', { title: 'Write', added: 'Movie successfully added.' }, function(err, data) {
+      res.render('write', { added: 'Movie successfully added.' }, function(err, data) {
         if (err) throw err;
         res.send(data);
       });

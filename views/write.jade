@@ -1,14 +1,33 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Lägg till film
+  p Fyll i alla fält och klicka på "Skicka".
   form(action='/write' method='POST')
-    input(type='text' name='title')
-    input(type='text' name='imdbRating')
-    input(type='text' name='plot')
-    input(type='text' name='director')
-    input(type='text' name='movieLength')
-    input(type='text' name='genre')
-    input(type='submit')
-  p #{added}
+    p
+      label Titel: 
+    p
+      input(type='text' name='title')
+    p
+      label IMDB Rating:
+    p
+      input(type='number' name='imdbRating')
+    p
+      label Handling: 
+    p
+      textarea(name='plot')
+    p
+      label Regissör: 
+    p
+      input(type='text' name='director')
+    p
+      label Längd: (0h 00min) 
+    p
+      input(type='text' name='movieLength')
+    p
+      label Genre: 
+    p
+      input(type='text' name='genre')
+    p
+      input(type='submit')
+  p(class='added') #{added}
