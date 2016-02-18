@@ -4,9 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var fs = require('fs');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var write = require('./routes/write');
 
 var app = express();
@@ -24,8 +24,27 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
 app.use('/write', write);
+
+// Write movie to file
+var filePath = __dirname + '/public/data.json';
+var obj;
+app.post('/write', function(req, res, next) {
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) throw err
+    obj = JSON.parse(data);
+    obj.film.push(req.body);
+    var send = JSON.stringify(obj);
+    fs.writeFile(filePath, send, function(err) {
+      if (err) throw err;
+      res.render('write', { title: 'Write', added: 'Movie successfully added.' }, function(err, data) {
+        if (err) throw err;
+        res.send(data);
+      });
+      console.log("File saved");
+    });
+  });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
