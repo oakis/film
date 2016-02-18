@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 Lista filmer
+  ul
+    each film in filmer
+      li
+        a(href='/show/' + film.title.replace(/ /g,''))= film.title

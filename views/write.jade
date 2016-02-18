@@ -3,6 +3,7 @@ extends layout
 block content
   h1 Lägg till film
   p Fyll i alla fält och klicka på "Skicka".
+  p(class='added') #{added}
   form(action='/write' method='POST')
     p
       label Titel: 
@@ -30,4 +31,3 @@ block content
       input(type='text' name='genre')
     p
       input(type='submit')
-  p(class='added') #{added}

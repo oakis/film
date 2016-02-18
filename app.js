@@ -8,6 +8,8 @@ var fs = require('fs');
 
 var routes = require('./routes/index');
 var write = require('./routes/write');
+var read = require('./routes/read');
+var show = require('./routes/show');
 
 var app = express();
 
@@ -25,6 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/write', write);
+app.use('/read', read);
+app.use('/show', show);
 
 // Write movie to file
 var filePath = __dirname + '/public/data.json';
@@ -37,7 +41,7 @@ app.post('/write', function(req, res, next) {
     var send = JSON.stringify(obj);
     fs.writeFile(filePath, send, function(err) {
       if (err) throw err;
-      res.render('write', { added: 'Movie successfully added.' }, function(err, data) {
+      res.render('write', { added: 'Filmen lades till i databasen utan problem.' }, function(err, data) {
         if (err) throw err;
         res.send(data);
       });
