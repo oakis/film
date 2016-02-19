@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var shell = require('shelljs');
 
 var routes = require('./routes/index');
 var write = require('./routes/write');
@@ -12,6 +13,9 @@ var read = require('./routes/read');
 var show = require('./routes/show');
 
 var app = express();
+
+app.locals.uptime = shell.exec('uptime');
+app.locals.nodeVersion = shell.exec('node -v');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +28,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//app.get('*', function(req, res, next) {
+  //var uptime = shell.exec('uptime');
+  //res.render('',{ serverUptime: uptime.output  });
+//});
 
 app.use('/', routes);
 app.use('/write', write);
