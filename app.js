@@ -14,8 +14,10 @@ var show = require('./routes/show');
 
 var app = express();
 
+// fun stuff
 app.locals.uptime = shell.exec('uptime');
 app.locals.nodeVersion = shell.exec('node -v');
+app.locals.isWin = /^win/.test(process.platform);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,10 +31,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.get('*', function(req, res, next) {
-  //var uptime = shell.exec('uptime');
-  //res.render('',{ serverUptime: uptime.output  });
-//});
 
 app.use('/', routes);
 app.use('/write', write);
@@ -50,10 +48,7 @@ app.post('/write', function(req, res, next) {
     var send = JSON.stringify(obj);
     fs.writeFile(filePath, send, function(err) {
       if (err) throw err;
-      res.render('write', { added: 'Filmen lades till i databasen utan problem.' }, function(err, data) {
-        if (err) throw err;
-        res.send(data);
-      });
+      res.render('write', { movieAdd: true });
       console.log("File saved");
     });
   });
@@ -71,6 +66,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
+  app.locals.pretty = true;
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {

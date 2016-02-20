@@ -18,9 +18,10 @@ router.get('/:title'.replace(/ /g,''), function (req, res) {
     		var director = obj.film[i].director;
     		var movieLength = obj.film[i].movieLength;
     		var genre = obj.film[i].genre;
+            var image = obj.film[i].image;
     	}
     }
-    res.render('show', { title: title, rating: rating, plot: plot, director: director, movieLength: movieLength, genre: genre });
+    res.render('show', { title: title, rating: rating, plot: plot, director: director, movieLength: movieLength, genre: genre, image: image });
   });
 });
 

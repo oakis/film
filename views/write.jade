@@ -3,31 +3,29 @@ extends layout
 block content
   h1 Lägg till film
   p Fyll i alla fält och klicka på "Skicka".
-  p(class='added') #{added}
+  - if(movieAdd)
+    p(class='added') Filmen tillagd i databasen
   form(action='/write' method='POST')
     p
       label Titel: 
-    p
       input(type='text' name='title')
     p
       label IMDB Rating:
-    p
       input(type='number' name='imdbRating')
     p
       label Handling: 
-    p
       textarea(name='plot')
     p
       label Regissör: 
-    p
       input(type='text' name='director')
     p
       label Längd: (0h 00min) 
-    p
       input(type='text' name='movieLength')
     p
       label Genre: 
-    p
       input(type='text' name='genre')
+    p
+      label Image URL:
+      input(type='url' name='image')
     p
       input(type='submit')
