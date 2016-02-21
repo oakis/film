@@ -15,10 +15,8 @@ var show = require('./routes/show');
 var app = express();
 
 // fun stuff
-var fixUptime = shell.exec('uptime').output;
-var tryAgain = fixUptime.split(" ");
-app.locals.uptime = tryAgain[tryAgain.indexOf("days,")-1]+" days";
-console.log(app.locals.uptime);
+var fixUptime = shell.exec('uptime').output.split(" ");
+app.locals.uptime = fixUptime[fixUptime.indexOf("days,")-1]+" days";
 app.locals.nodeVersion = shell.exec('node -v');
 app.locals.isWin = /^win/.test(process.platform);
 
