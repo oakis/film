@@ -48,7 +48,7 @@ app.post('/write', function(req, res, next) {
     if (err) throw err
     obj = JSON.parse(data);
     obj.film.push(req.body);
-    var send = JSON.stringify(obj);
+    var send = JSON.stringify(obj,null,"\t");
     fs.writeFile(filePath, send, function(err) {
       if (err) throw err;
       res.render('write', { movieAdd: true });
