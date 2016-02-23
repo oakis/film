@@ -1,5 +1,9 @@
 div(class='version')
   p Node version: #{nodeVersion.output}
-- if(!isWin)
-  div(class='uptime')
-    p Server uptime: #{uptime}
+  if(uptime.typeof == undefined)
+    div(class='uptime')
+      p Server uptime: 1 day
+  else
+    if(!isWin)
+    div(class='uptime')
+      p Server uptime: #{uptime}
