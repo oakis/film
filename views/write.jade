@@ -11,7 +11,7 @@ block content
       input(type='text' name='title')
     p
       label IMDB Rating:
-      input(type='number' name='imdbRating')
+      input(type='number' step='0.1' name='imdbRating')
     p
       label Handling: 
       textarea(name='plot')
@@ -22,10 +22,14 @@ block content
       label Längd: (0h 00min) 
       input(type='text' name='movieLength')
     p
-      label Genre: 
-      input(type='text' name='genre')
+      label Comedy:
+      input(type='checkbox' name='genre' value='Comedy')
+      label Crime:
+      input(type='checkbox' name='genre' value='Crime')
+      label Drama:
+      input(type='checkbox' name='genre' value='Drama')
     p
       label Image URL:
-      input(type='url' name='image')
+      input(type='text' name='image')
     p
       input(type='submit')

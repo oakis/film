@@ -100,6 +100,11 @@ section {
 		color: #F00;
 	}
 
+	.genre li {
+		display: inline-block;
+		margin: auto 1em;
+	}
+
 /* *** FOOTER *** */
 
 footer {

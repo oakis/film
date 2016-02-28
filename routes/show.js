@@ -17,7 +17,11 @@ router.get('/:title'.replace(/ /g,''), function (req, res) {
     		var plot = obj.film[i].plot;
     		var director = obj.film[i].director;
     		var movieLength = obj.film[i].movieLength;
-    		var genre = obj.film[i].genre;
+            if (typeof obj.film[i].genre == 'string') {
+    		  var genre = obj.film[i].genre;
+            } else {
+              var genre = obj.film[i].genre.join(', ');
+            }
             var image = obj.film[i].image;
     	}
     }

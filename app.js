@@ -18,7 +18,6 @@ var app = express();
 var fixUptime = shell.exec('uptime').output.split(" ");
 app.locals.uptime = fixUptime[fixUptime.indexOf("days,")-1]+" days";
 app.locals.nodeVersion = shell.exec('node -v');
-app.locals.isWin = /^win/.test(process.platform);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,6 +37,17 @@ app.use('/write', write);
 app.use('/read', read);
 app.use('/show', show);
 
+// If only one genre, force array of one element
+function oneOrMoreGenres (genre) {
+  if (typeof genre == 'string') {
+    var arr = [];
+    arr.push(genre);
+    return arr;
+  } else {
+    return genre;
+  }
+}
+
 // Write movie to file
 var filePath = __dirname + '/public/data.json';
 var obj;
@@ -45,7 +55,16 @@ app.post('/write', function(req, res, next) {
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) throw err
     obj = JSON.parse(data);
-    obj.film.push(req.body);
+    var newMovie = {
+      "title": req.body.title,
+      "imdbRating": req.body.imdbRating,
+      "plot": req.body.plot,
+      "director": req.body.director,
+      "movieLength": req.body.movieLength,
+      "genre": oneOrMoreGenres(req.body.genre),
+      "image": req.body.image
+    };
+    obj.film.push(newMovie);
     var send = JSON.stringify(obj,null,"\t");
     fs.writeFile(filePath, send, function(err) {
       if (err) throw err;

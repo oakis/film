@@ -1,9 +1,25 @@
 extends layout
 
 block content
-  h1 Lista filmer
+  h1= title
   p(class='varning') De två översta filmerna är safe att klicka på. (Resterande kan vara NSFW)
+  ul(class='genre')
+    li
+      a(href='/read') Visa alla
+    li
+      a(href='?genre=Comedy') Comedy
+    li
+      a(href='?genre=Crime') Crime
+    li
+      a(href='?genre=Drama') Drama
+  if (filmer.length == 0)
+    p Det finns inga filmer i denna kategorin.
+  else if (filmer.length == 1)
+    p Det finns 1 film i denna kategorin.
+  else
+    p Det finns #{filmer.length} filmer i denna kategorin.
   ul
-    each film in filmer
+    each post in filmer
       li
-        a(href='/show/' + film.title.replace(/ /g,''))= film.title
+        a(href='/show/' + post.title.replace(/ /g,''))= post.title
+  
