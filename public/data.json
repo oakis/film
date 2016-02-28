@@ -1,21 +1,50 @@
 {
 	"film": [
-	{
-		"title": "The Shawshank Redemption",
-		"imdbRating": "9.3",
-		"plot": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-		"director": "Frank Darabont",
-		"movieLength": "2h 22min",
-		"genre": "Crime, Drama",
-		"image": "http://ia.media-imdb.com/images/M/MV5BODU4MjU4NjIwNl5BMl5BanBnXkFtZTgwMDU2MjEyMDE@._V1_UX182_CR0,0,182,268_AL_.jpg"
-	}, 
-	{
-		"title": "Pulp Fiction",
-		"imdbRating": "8.9",
-		"plot": "The lives of two mob hit men, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
-		"director": "Quentin Tarantino",
-		"movieLength": "2h 34m",
-		"genre": "Crime, Drama",
-		"image": "http://ia.media-imdb.com/images/M/MV5BMTkxMTA5OTAzMl5BMl5BanBnXkFtZTgwNjA5MDc3NjE@._V1_UX182_CR0,0,182,268_AL_.jpg"
-	}]
+		{
+			"title": "The Shawshank Redemption",
+			"imdbRating": "9.3",
+			"plot": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+			"director": "Frank Darabont",
+			"movieLength": "2h 22min",
+			"genre": [
+				"Crime",
+				"Drama"
+			],
+			"image": "/images/TheShawshankRedemption.jpg"
+		},
+		{
+			"title": "Pulp Fiction",
+			"imdbRating": "8.9",
+			"plot": "The lives of two mob hit men, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+			"director": "Quentin Tarantino",
+			"movieLength": "2h 34m",
+			"genre": [
+				"Crime",
+				"Drama"
+			],
+			"image": "/images/PulpFiction.jpg"
+		},
+		{
+			"title": "Superbad",
+			"imdbRating": "7.6",
+			"plot": "Two co-dependent high school seniors are forced to deal with separation anxiety after their plan to stage a booze-soaked party goes awry.",
+			"director": "Greg Mottola",
+			"movieLength": "1h 53min",
+			"genre": [
+				"Comedy"
+			],
+			"image": "/images/Superbad.jpg"
+		},
+		{
+			"title": "Titanic",
+			"imdbRating": "7.7",
+			"plot": "A seventeen-year-old aristocrat falls in love with a kind, but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.",
+			"director": "James Cameron",
+			"movieLength": "3h 14min",
+			"genre": [
+				"Drama"
+			],
+			"image": "/images/Titanic.jpg"
+		}
+	]
 }

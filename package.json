@@ -16,7 +16,7 @@
     "shelljs": "^0.6.0"
   },
   "description": "A small school project with nodejs.",
-  "main": "app.js",
+  "main": "bin/www",
   "devDependencies": {},
   "repository": {
     "type": "git",
